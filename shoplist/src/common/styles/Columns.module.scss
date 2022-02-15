@@ -1,0 +1,21 @@
+$color-red: #44b14a;
+$color-yellow: #03002b;
+
+.AppList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.AppProd {
+  padding: 10px 30px;
+  list-style-type: none;
+}
+
+.AppProd li:hover {
+  color: #c79834;
+}
+
+b {
+  color: #06312a;
+}

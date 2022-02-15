@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React , { useState } from 'react';
+import ProductsList from './components/ProductsList/ProductsList';
+import ShopingList from './components/ShopingList/ShopingList';
+import styles from './App.module.scss';
 import produkty from "./common/consts/produkty";
 
+
+let list =  [];
+
 function App() {
+  const [resultsToDisplay] = useState(produkty);
+  const [showListDisplay, setListDisplay] = useState(list);
+  const [rerender, setRerender] = useState(false);        
+
+  
+  const sendDataToParent = (item) => { 
+    let iloscWKoszyku = showListDisplay.length
+    let maxid = 0;
+    for(let i = 0; i < iloscWKoszyku; i++){
+      const a = showListDisplay[i].id;
+      if(a >= maxid) maxid= a + 1; 
+    }
+    
+    showListDisplay.push({id: maxid, nazwa: item.nazwa, podkreslony: false});
+    setListDisplay(showListDisplay);
+    setRerender(!rerender);
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className={styles.appWrapper}>
+      <div className={styles.columnsWrapper}>
+        <ProductsList showProductsToDisplay={resultsToDisplay} sendDataToParent={sendDataToParent}/>
+        </div>
+      <div className={styles.columnsWrapper1}>
+        <ShopingList showPurchaseList={showListDisplay}/>
+      </div>
+     </div>
+    
   );
 }
 

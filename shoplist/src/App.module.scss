@@ -1,0 +1,26 @@
+.appWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  background: #ccc;
+  list-style: none;
+  min-height: calc(115vh - 150px);
+}
+
+.columnsWrapper {
+  flex: 1 0;
+  list-style: none;
+  min-height: calc(115vh - 150px);
+  text-align: center;
+}
+
+.columnsWrapper1 {
+  flex: 1 0;
+  background-color: cadetblue;
+  list-style: none;
+  min-height: calc(115vh - 150px);
+  text-align: center;
+}
